@@ -1,4 +1,22 @@
-import { TrendingDown } from "lucide-react";
+import { TrendingDown, ShieldOff, Clock4, Users } from "lucide-react";
+
+const rightStats = [
+  {
+    icon: ShieldOff,
+    value: "68%",
+    label: "não detectam invasões em tempo real",
+  },
+  {
+    icon: Clock4,
+    value: "287d",
+    label: "tempo médio para descobrir uma brecha",
+  },
+  {
+    icon: Users,
+    value: "82%",
+    label: "dos ataques vêm de dentro da rede",
+  },
+];
 
 export function StatBanner() {
   return (
@@ -6,8 +24,10 @@ export function StatBanner() {
       <div className="mx-auto max-w-6xl">
         <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12">
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
-          <div className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-start gap-5">
+          <div className="relative flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+
+            {/* Left: main stat */}
+            <div className="flex items-start gap-5 md:max-w-[52%]">
               <div className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-destructive/15 ring-1 ring-destructive/40 md:flex">
                 <TrendingDown className="h-6 w-6 text-destructive" />
               </div>
@@ -23,6 +43,24 @@ export function StatBanner() {
                   Onde estão os seus outros <span className="font-mono text-destructive">96%</span>?
                 </p>
               </div>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden w-px self-stretch bg-border/60 md:block" />
+
+            {/* Right: additional stats */}
+            <div className="flex flex-col gap-5 md:min-w-[36%]">
+              {rightStats.map(({ icon: Icon, value, label }) => (
+                <div key={label} className="flex items-center gap-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10 ring-1 ring-destructive/30">
+                    <Icon className="h-4 w-4 text-destructive" />
+                  </span>
+                  <div>
+                    <span className="font-mono text-lg font-semibold text-foreground">{value}</span>
+                    <span className="ml-2 text-sm text-muted-foreground">{label}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { Navbar } from "@/components/verum/Navbar";
 import { Hero } from "@/components/verum/Hero";
 import { StatBanner } from "@/components/verum/StatBanner";
 import { Trindade } from "@/components/verum/Trindade";
-import { TerminalDemo } from "@/components/verum/Terminal";
 import { Contact } from "@/components/verum/Contact";
 import { Footer } from "@/components/verum/Footer";
 
@@ -33,7 +32,6 @@ function Index() {
       <Hero />
       <StatBanner />
       <Trindade />
-      <TerminalDemo />
       <Contact />
       <Footer />
     </main>

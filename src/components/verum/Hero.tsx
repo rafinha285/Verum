@@ -17,7 +17,7 @@ export function Hero() {
         <h1 className="text-balance text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
           <span className="text-gradient">Verum:</span>
           <br />
-          A Inteligência da Coerência.
+          A Inteligência da Segurança.
         </h1>
 
         <p className="mx-auto mt-7 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl">
