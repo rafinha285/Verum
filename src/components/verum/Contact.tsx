@@ -9,9 +9,9 @@ import { supabase } from "@/lib/supabase";
 import agentVideo from "@/assets/agent-auto-video_segment_1.gif";
 
 const contacts = [
-  { icon: Mail,    text: "contato@verum.security" },
-  { icon: Link2,   text: "linkedin.com/company/verum" },
-  { icon: MapPin,  text: "São Paulo · Brasil" },
+  { icon: Mail, text: "verum.sec0@gmail.com" },
+  // { icon: Link2,   text: "linkedin.com/company/verum" },
+  { icon: MapPin, text: "Ponta Grossa · Paraná · Brasil" },
 ];
 
 export function Contact() {
