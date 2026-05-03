@@ -22,52 +22,76 @@ const colors: Record<Line["type"], string> = {
   err: "text-destructive",
 };
 
-/* ── Dashboard metrics derived from terminal data ── */
 const dashMetrics = [
-  { icon: Users,        label: "Usuários monitorados", value: "1",          sub: "ana.lima ativo" },
-  { icon: Activity,     label: "Eventos analisados",   value: "14",         sub: "ciclo atual" },
-  { icon: Shield,       label: "Incoerências",          value: "0 → 1",     sub: "padrão quebrado" },
-  { icon: AlertOctagon, label: "Alertas críticos",      value: "1",         sub: "Incoerência Temporal" },
-  { icon: Wifi,         label: "IP suspeito",           value: "45.142.x.x", sub: "origem desconhecida" },
-  { icon: Clock,        label: "Sessão suspensa",       value: "03:00",     sub: "fora do horário padrão" },
+  { icon: Users,        label: "Usuários monitorados", value: "1",          sub: "ana.lima ativo", state: "normal" },
+  { icon: Activity,     label: "Eventos analisados",   value: "14",         sub: "ciclo atual", state: "normal" },
+  { icon: Shield,       label: "Incoerências",          value: "1",         sub: "padrão quebrado", state: "warning" },
+  { icon: AlertOctagon, label: "Alertas críticos",      value: "1",         sub: "Incoerência Temporal", state: "critical" },
+  { icon: Wifi,         label: "IP suspeito",           value: "45.142.x.x", sub: "origem desconhecida", state: "critical" },
+  { icon: Clock,        label: "Sessão suspensa",       value: "03:00",     sub: "fora do horário padrão", state: "warning" },
 ];
 
-/* ── Standalone dashboard panel ── */
 export function DashboardPanel() {
   return (
-    <div className="glass overflow-hidden rounded-xl shadow-xl">
-      <div className="flex items-center justify-between border-b border-border/60 px-4 py-3">
-        <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-          <Activity className="h-3.5 w-3.5 text-primary" />
-          verum-dashboard · network/01
+    <div className="glass overflow-hidden rounded-xl shadow-xl ring-1 ring-border/50">
+      {/* Top Header */}
+      <div className="flex items-center justify-between border-b border-border/60 bg-card/40 px-5 py-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 ring-1 ring-primary/20">
+            <Activity className="h-4 w-4 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-mono text-sm font-semibold text-foreground">Verum Dashboard</h3>
+            <p className="font-mono text-[10px] text-muted-foreground">network/01 · modo vigilância</p>
+          </div>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 font-mono text-[10px] text-primary ring-1 ring-primary/30">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          LIVE
-        </span>
+        <div className="flex items-center gap-4">
+          <div className="hidden items-center gap-2 text-right md:flex">
+            <span className="font-mono text-[10px] uppercase text-muted-foreground">Nível de Risco</span>
+            <div className="h-1.5 w-24 overflow-hidden rounded-full bg-border">
+              <div className="h-full w-[85%] bg-destructive animate-pulse" />
+            </div>
+          </div>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-2.5 py-1 font-mono text-[10px] font-medium text-destructive ring-1 ring-destructive/30">
+            <span className="h-1.5 w-1.5 rounded-full bg-destructive animate-pulse" />
+            ALERTA ATIVO
+          </span>
+        </div>
       </div>
 
+      {/* Metrics Grid */}
       <div className="grid grid-cols-2 gap-px bg-border/40 sm:grid-cols-3">
-        {dashMetrics.map(({ icon: Icon, label, value, sub }) => (
-          <div
-            key={label}
-            className="flex flex-col gap-1 bg-[oklch(0.14_0.02_250)] p-4 transition-colors hover:bg-[oklch(0.16_0.03_250)]"
-          >
-            <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-              <Icon className="h-3 w-3 text-primary/70" />
-              {label}
+        {dashMetrics.map(({ icon: Icon, label, value, sub, state }) => {
+          const isCrit = state === "critical";
+          const isWarn = state === "warning";
+          
+          return (
+            <div
+              key={label}
+              className={`relative flex flex-col gap-1.5 bg-card/60 p-5 transition-colors hover:bg-card/80 ${
+                isCrit ? "bg-destructive/5" : isWarn ? "bg-orange-500/5" : ""
+              }`}
+            >
+              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.1em]">
+                <Icon className={`h-3.5 w-3.5 ${isCrit ? "text-destructive" : isWarn ? "text-orange-500" : "text-primary"}`} />
+                <span className={isCrit ? "text-destructive/80 font-semibold" : isWarn ? "text-orange-500/80 font-semibold" : "text-muted-foreground"}>
+                  {label}
+                </span>
+              </div>
+              <span className={`mt-1 font-mono text-2xl font-bold tracking-tight ${isCrit ? "text-destructive" : isWarn ? "text-orange-500" : "text-foreground"}`}>
+                {value}
+              </span>
+              <span className="font-mono text-[10px] text-muted-foreground">{sub}</span>
             </div>
-            <span className="mt-1 font-mono text-xl font-semibold text-foreground">{value}</span>
-            <span className="font-mono text-[10px] text-muted-foreground/70">{sub}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
 }
 
 /* ── Standalone terminal panel (animation only) ── */
-export function TerminalPanel() {
+export function TerminalPanel({ className = "" }: { className?: string }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -81,8 +105,8 @@ export function TerminalPanel() {
   }, [count]);
 
   return (
-    <div className="glass overflow-hidden rounded-xl shadow-2xl">
-      <div className="flex items-center justify-between border-b border-border/60 px-4 py-3">
+    <div className={`glass flex flex-col overflow-hidden rounded-xl shadow-2xl ${className}`}>
+      <div className="flex items-center justify-between border-b border-border/60 px-4 py-3 shrink-0">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-destructive/70" />
           <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
@@ -95,7 +119,7 @@ export function TerminalPanel() {
         <div className="w-12" />
       </div>
 
-      <div className="min-h-[220px] bg-[oklch(0.14_0.02_250)] px-5 py-5 font-mono text-[13px] leading-relaxed">
+      <div className="flex-1 min-h-[220px] bg-[oklch(0.14_0.02_250)] px-5 py-5 font-mono text-[13px] leading-relaxed select-none">
         {sequence.slice(0, count).map((line, i) => (
           <div key={i} className={`${colors[line.type]} animate-[fade-in_0.25s_ease-out]`}>
             {line.t}

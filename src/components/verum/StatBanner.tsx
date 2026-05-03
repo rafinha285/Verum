@@ -21,9 +21,32 @@ const rightStats = [
 export function StatBanner() {
   return (
     <section className="relative px-6 py-12">
-      <div className="mx-auto max-w-6xl">
-        <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12">
-          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
+      <div className="mx-auto max-w-6xl flex flex-col gap-8">
+        {/* First Block: Kaspersky Stat */}
+        <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12 border border-destructive/20">
+          <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
+          <div className="relative flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-destructive/15 ring-1 ring-destructive/40">
+              <TrendingDown className="h-6 w-6 text-destructive" />
+            </div>
+            <div className="flex-1">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-destructive">
+                Cenário de Ameaças
+              </p>
+              <p className="mt-3 text-2xl font-medium leading-snug text-foreground md:text-3xl">
+                <span className="font-mono text-destructive">35%</span> das empresas brasileiras já sofreram com
+                vazamento de dados, segundo a <span className="text-primary font-mono">Kaspersky</span>.
+              </p>
+              <p className="mt-4 text-sm text-muted-foreground border-t border-border/50 pt-4">
+                <strong className="text-foreground">Kaspersky:</strong> Empresa global de segurança que reportou o índice de 35% de vazamentos em empresas brasileiras.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Second Block: Original Stats */}
+        <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12 border border-destructive/20">
+          <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
           <div className="relative flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
 
             {/* Left: main stat */}
