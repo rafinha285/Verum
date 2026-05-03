@@ -1,0 +1,45 @@
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export function Hero() {
+  return (
+    <section id="top" className="relative overflow-hidden pt-40 pb-28">
+      <div className="absolute inset-0 dot-grid opacity-60" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="absolute left-1/2 top-24 -z-10 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+
+      <div className="relative mx-auto max-w-5xl px-6 text-center animate-[fade-in_0.8s_ease-out]">
+        <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3.5 py-1.5 text-xs text-muted-foreground backdrop-blur">
+          <Sparkles className="h-3.5 w-3.5 text-primary" />
+          <span className="font-mono">IA · Cibersegurança Comportamental</span>
+        </div>
+
+        <h1 className="text-balance text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
+          <span className="text-gradient">Verum:</span>
+          <br />
+          A Inteligência da Coerência.
+        </h1>
+
+        <p className="mx-auto mt-7 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl">
+          Sistemas comuns barram vírus. <span className="text-foreground">Nós detectamos intenções suspeitas</span> antes que o prejuízo aconteça.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button asChild size="lg" className="glow-primary h-12 px-7 text-base font-semibold transition-all">
+            <a href="#contato">
+              Proteger minha empresa
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
+          <Button asChild variant="ghost" size="lg" className="h-12 px-5 text-base text-muted-foreground hover:text-foreground">
+            <a href="#tecnologia">Ver tecnologia →</a>
+          </Button>
+        </div>
+
+        <p className="mt-10 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
+          // monitoramento contínuo · alertas em tempo real · zero ruído
+        </p>
+      </div>
+    </section>
+  );
+}
