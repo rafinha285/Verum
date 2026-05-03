@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, Linkedin, MapPin, CheckCircle2 } from "lucide-react";
+import { Send, Mail, Link2, MapPin, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,7 +31,7 @@ export function Contact() {
             </li>
             <li className="flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10 ring-1 ring-primary/30">
-                <Linkedin className="h-4 w-4 text-primary" />
+                <Link2 className="h-4 w-4 text-primary" />
               </span>
               <span className="font-mono text-muted-foreground">linkedin.com/company/verum</span>
             </li>
