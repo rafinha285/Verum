@@ -23,9 +23,9 @@ const cards = [
 
 export function Trindade() {
   return (
-    <section id="tecnologia" className="relative px-6 py-24">
+    <section id="tecnologia" className="relative px-6 py-14">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-14 max-w-2xl">
+        <div className="mb-8 max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
             // a trindade do problema
           </p>

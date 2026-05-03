@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { DashboardPanel, TerminalPanel } from "@/components/verum/Terminal";
+import agentVideo from "@/assets/agent-auto-video_segment_1.gif";
 
 const contacts = [
   { icon: Mail,    text: "contato@verum.security" },
@@ -16,8 +17,17 @@ export function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="contato" className="relative px-6 pt-24 pb-12">
-      <div className="mx-auto max-w-6xl space-y-12">
+    <section id="contato" className="relative px-6 pt-16 pb-8">
+      <div className="mx-auto max-w-6xl space-y-8">
+
+        {/* ── Video/GIF Area ── */}
+        <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-border/50 bg-black/20">
+          <img 
+            src={agentVideo} 
+            alt="Verum Agent Analysis" 
+            className="w-full h-auto max-h-[400px] object-cover mix-blend-screen opacity-90"
+          />
+        </div>
 
         {/* ── Dashboard before the header ── */}
         <DashboardPanel />

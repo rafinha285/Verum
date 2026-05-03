@@ -58,7 +58,7 @@ export function DashboardPanel() {
           </span>
         </div>
       </div>
-
+      
       {/* Metrics Grid */}
       <div className="grid grid-cols-2 gap-px bg-border/40 sm:grid-cols-3">
         {dashMetrics.map(({ icon: Icon, label, value, sub, state }) => {

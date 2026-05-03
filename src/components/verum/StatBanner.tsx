@@ -20,31 +20,110 @@ const rightStats = [
 
 export function StatBanner() {
   return (
-    <section className="relative px-6 py-12">
-      <div className="mx-auto max-w-6xl flex flex-col gap-8">
-        {/* First Block: Kaspersky Stat */}
+    <section className="relative px-6 py-6">
+      <div className="mx-auto max-w-6xl flex flex-col gap-5">
+        
+        {/* Block 1: Kaspersky Stat */}
         <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12 border border-destructive/20">
           <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
-          <div className="relative flex flex-col md:flex-row md:items-center gap-6">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-destructive/15 ring-1 ring-destructive/40">
-              <TrendingDown className="h-6 w-6 text-destructive" />
+          <div className="relative flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+            {/* Left */}
+            <div className="flex items-start gap-5 md:max-w-[52%]">
+              <div className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-destructive/15 ring-1 ring-destructive/40 md:flex">
+                <TrendingDown className="h-6 w-6 text-destructive" />
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-destructive">
+                  Cenário de Ameaças
+                </p>
+                <p className="mt-3 text-2xl font-medium leading-snug text-foreground md:text-3xl">
+                  <span className="font-mono text-destructive">35%</span> das empresas brasileiras já sofreram com
+                  vazamento de dados, segundo a <span className="text-primary font-mono">Kaspersky</span>.
+                </p>
+                <p className="mt-4 text-sm text-muted-foreground border-t border-border/50 pt-4">
+                  <strong className="text-foreground">Kaspersky:</strong> Empresa global de segurança que reportou o índice de 35% de vazamentos em empresas brasileiras.
+                </p>
+              </div>
             </div>
-            <div className="flex-1">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-destructive">
-                Cenário de Ameaças
-              </p>
-              <p className="mt-3 text-2xl font-medium leading-snug text-foreground md:text-3xl">
-                <span className="font-mono text-destructive">35%</span> das empresas brasileiras já sofreram com
-                vazamento de dados, segundo a <span className="text-primary font-mono">Kaspersky</span>.
-              </p>
-              <p className="mt-4 text-sm text-muted-foreground border-t border-border/50 pt-4">
-                <strong className="text-foreground">Kaspersky:</strong> Empresa global de segurança que reportou o índice de 35% de vazamentos em empresas brasileiras.
-              </p>
+
+            {/* Divider */}
+            <div className="hidden w-px self-stretch bg-border/60 md:block" />
+
+            {/* Right side stats for Kaspersky block */}
+            <div className="flex flex-col gap-5 md:min-w-[36%]">
+              <div className="flex items-center gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10 ring-1 ring-destructive/30">
+                  <TrendingDown className="h-4 w-4 text-destructive" />
+                </span>
+                <div>
+                  <span className="font-mono text-lg font-semibold text-foreground">R$ 6M</span>
+                  <span className="ml-2 text-sm text-muted-foreground">custo médio de um vazamento no BR</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10 ring-1 ring-destructive/30">
+                  <ShieldOff className="h-4 w-4 text-destructive" />
+                </span>
+                <div>
+                  <span className="font-mono text-lg font-semibold text-foreground">60%</span>
+                  <span className="ml-2 text-sm text-muted-foreground">das PMEs fecham após um ataque</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Second Block: Original Stats */}
+        {/* Block 2: Human Error Stat */}
+        <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12 border border-destructive/20">
+          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
+          <div className="relative flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+            {/* Left */}
+            <div className="flex items-start gap-5 md:max-w-[52%]">
+              <div className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-destructive/15 ring-1 ring-destructive/40 md:flex">
+                <Users className="h-6 w-6 text-destructive" />
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-destructive">
+                  Fator Humano
+                </p>
+                <p className="mt-3 text-2xl font-medium leading-snug text-foreground md:text-3xl">
+                  O erro humano é responsável por <span className="font-mono text-destructive">68%</span> das violações de dados, 
+                  segundo a <span className="text-primary font-mono">Você RH</span>.
+                </p>
+                <p className="mt-4 text-sm text-muted-foreground border-t border-border/50 pt-4">
+                  <strong className="text-foreground">Você RH:</strong> Portal especializado em gestão de pessoas que reportou a incidência de falhas humanas na segurança digital.
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden w-px self-stretch bg-border/60 md:block" />
+
+            {/* Right side stats for Human Error block */}
+            <div className="flex flex-col gap-5 md:min-w-[36%]">
+              <div className="flex items-center gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10 ring-1 ring-destructive/30">
+                  <ShieldOff className="h-4 w-4 text-destructive" />
+                </span>
+                <div>
+                  <span className="font-mono text-lg font-semibold text-foreground">95%</span>
+                  <span className="ml-2 text-sm text-muted-foreground">das brechas têm origem humana</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10 ring-1 ring-destructive/30">
+                  <Users className="h-4 w-4 text-destructive" />
+                </span>
+                <div>
+                  <span className="font-mono text-lg font-semibold text-foreground">30%</span>
+                  <span className="ml-2 text-sm text-muted-foreground">dos ataques usam engenharia social</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Block 3: Original Stats */}
         <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-12 border border-destructive/20">
           <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-destructive/15 blur-3xl" />
           <div className="relative flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
